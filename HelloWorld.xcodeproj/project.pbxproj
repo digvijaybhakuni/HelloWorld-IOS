@@ -12,6 +12,10 @@
 		C308E8391FC8382B008F6119 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C308E8371FC8382B008F6119 /* Main.storyboard */; };
 		C308E83B1FC8382B008F6119 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C308E83A1FC8382B008F6119 /* Assets.xcassets */; };
 		C308E83E1FC8382B008F6119 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C308E83C1FC8382B008F6119 /* LaunchScreen.storyboard */; };
+		C312BA86214D90C6008EC9EE /* HelloWorld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C312BA84214D90C6008EC9EE /* HelloWorld.xcdatamodeld */; };
+		C31D1B812150B3BB0099FA85 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31D1B802150B3BB0099FA85 /* TableViewController.swift */; };
+		C37CF1A02152A0BC007A63E5 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CF19F2152A0BC007A63E5 /* EditViewController.swift */; };
+		C37CF1A22152DC5F007A63E5 /* TestEntityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37CF1A12152DC5F007A63E5 /* TestEntityDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		C308E83A1FC8382B008F6119 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C308E83D1FC8382B008F6119 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C308E83F1FC8382B008F6119 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C312BA85214D90C6008EC9EE /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		C31D1B802150B3BB0099FA85 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C37CF19F2152A0BC007A63E5 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		C37CF1A12152DC5F007A63E5 /* TestEntityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEntityDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +62,16 @@
 		C308E8321FC8382B008F6119 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				C312BA84214D90C6008EC9EE /* HelloWorld.xcdatamodeld */,
 				C308E8331FC8382B008F6119 /* AppDelegate.swift */,
 				C308E8351FC8382B008F6119 /* ViewController.swift */,
+				C31D1B802150B3BB0099FA85 /* TableViewController.swift */,
+				C37CF19F2152A0BC007A63E5 /* EditViewController.swift */,
 				C308E8371FC8382B008F6119 /* Main.storyboard */,
 				C308E83A1FC8382B008F6119 /* Assets.xcassets */,
 				C308E83C1FC8382B008F6119 /* LaunchScreen.storyboard */,
 				C308E83F1FC8382B008F6119 /* Info.plist */,
+				C37CF1A12152DC5F007A63E5 /* TestEntityDelegate.swift */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
@@ -91,12 +103,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Digvijay Bhakuni";
 				TargetAttributes = {
 					C308E82F1FC8382B008F6119 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = TLHZ77NGX8;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,8 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C37CF1A02152A0BC007A63E5 /* EditViewController.swift in Sources */,
 				C308E8361FC8382B008F6119 /* ViewController.swift in Sources */,
 				C308E8341FC8382B008F6119 /* AppDelegate.swift in Sources */,
+				C37CF1A22152DC5F007A63E5 /* TestEntityDelegate.swift in Sources */,
+				C312BA86214D90C6008EC9EE /* HelloWorld.xcdatamodeld in Sources */,
+				C31D1B812150B3BB0099FA85 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,15 +190,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -223,15 +249,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -266,7 +301,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.db.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -279,7 +315,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.db.HelloWorld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -302,8 +339,22 @@
 				C308E8441FC8382B008F6119 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C312BA84214D90C6008EC9EE /* HelloWorld.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C312BA85214D90C6008EC9EE /* Model.xcdatamodel */,
+			);
+			currentVersion = C312BA85214D90C6008EC9EE /* Model.xcdatamodel */;
+			path = HelloWorld.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C308E8281FC8382B008F6119 /* Project object */;
 }
