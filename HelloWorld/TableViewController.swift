@@ -12,16 +12,28 @@ struct Employee: Decodable{
     let id: Int
     let email: String
     let name: String
-    // let createOn: Date
+    let createOn: Date
     let owner: Int
     
     init(json: [String: Any]){
         id = json["id"] as? Int ?? -1
         email = json["email"] as? String ?? ""
         name = json["name"] as? String ?? ""
-        // createOn = json["createOn"] as? Date ?? Date()
+        // createOn = json["createOn"] as? String ?? ""
+        createOn = json["createOn"] as? Date ?? Date()
         owner = json["owner"] as? Int ?? -1
     }
+}
+
+extension Formatter {
+    static let iso8601: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }()
 }
 
 class TableViewController: UITableViewController {
@@ -105,10 +117,11 @@ class TableViewController: UITableViewController {
             do {
                 guard let data = data else { return }
                 let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
+                decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
                 // For Single Object try decoder.decode(Employee.self, from: data)
                 let emp1Json = try decoder.decode([Employee].self, from: data)
                 print(emp1Json.first?.email ?? " nil email")
+                print(emp1Json)
             }catch let errJson {
                 print("Error ... Catch ")
                 print(errJson)
