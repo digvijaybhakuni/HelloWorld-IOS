@@ -8,6 +8,22 @@
 
 import UIKit
 
+struct Employee: Decodable{
+    let id: Int
+    let email: String
+    let name: String
+    // let createOn: Date
+    let owner: Int
+    
+    init(json: [String: Any]){
+        id = json["id"] as? Int ?? -1
+        email = json["email"] as? String ?? ""
+        name = json["name"] as? String ?? ""
+        // createOn = json["createOn"] as? Date ?? Date()
+        owner = json["owner"] as? Int ?? -1
+    }
+}
+
 class TableViewController: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -15,6 +31,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         do {
             entities = try context.fetch(TestEntity.fetchRequest())
@@ -27,13 +45,77 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // self.callApi()
+        self.callApiUsingDecoder()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func callApi(){
+        let empApiUrl = "http://localhost:8000/api/v1/employees/1/"
+        let url = URL(string: empApiUrl)
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.addValue("Token eff98b75e5f81ef1a7d756b4d9270133759d7934", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
+            // Check Error
+            // Check Response
+            print("call Api ")
+            //print(err)
+            // Binary to String
+            guard let data = data else { return }
+            //let dataAsStr = String(data: data, encoding: .utf8)
+            
+            // Binary to Json
+            do{
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
+                print(json)
+                
+                let emp1 = Employee(json: json)
+                
+                print(emp1)
+                
+                // Directly Decode Response Data to Object Employee
+                let emp1Json = try JSONDecoder().decode(Employee.self, from: data)
+                
+                print(emp1Json.name)
+                
+                let t1 = TestEntity(context: self.context)
+                t1.name = emp1.name
+                // t1.dob = emp1.createOn
+                t1.textData = emp1.email
+                self.entities.append(t1)
+                
+            }catch let jsonErr {
+                print("error json error")
+                print(jsonErr.localizedDescription)
+            }
+            
+        }.resume()
+    }
 
+    func callApiUsingDecoder(){
+        let url = URL(string: "http://localhost:8000/api/v1/employees/")
+        var urlRequest = URLRequest(url: url!)
+        urlRequest.addValue("Token eff98b75e5f81ef1a7d756b4d9270133759d7934", forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
+            do {
+                guard let data = data else { return }
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                // For Single Object try decoder.decode(Employee.self, from: data)
+                let emp1Json = try decoder.decode([Employee].self, from: data)
+                print(emp1Json.first?.email ?? " nil email")
+            }catch let errJson {
+                print("Error ... Catch ")
+                print(errJson)
+            }
+        }.resume()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

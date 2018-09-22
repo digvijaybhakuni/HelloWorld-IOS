@@ -67,11 +67,11 @@
 				C308E8351FC8382B008F6119 /* ViewController.swift */,
 				C31D1B802150B3BB0099FA85 /* TableViewController.swift */,
 				C37CF19F2152A0BC007A63E5 /* EditViewController.swift */,
+				C37CF1A12152DC5F007A63E5 /* TestEntityDelegate.swift */,
 				C308E8371FC8382B008F6119 /* Main.storyboard */,
 				C308E83A1FC8382B008F6119 /* Assets.xcassets */,
 				C308E83C1FC8382B008F6119 /* LaunchScreen.storyboard */,
 				C308E83F1FC8382B008F6119 /* Info.plist */,
-				C37CF1A12152DC5F007A63E5 /* TestEntityDelegate.swift */,
 			);
 			path = HelloWorld;
 			sourceTree = "<group>";
