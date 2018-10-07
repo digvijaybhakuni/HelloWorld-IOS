@@ -40,6 +40,7 @@ class TableViewController: UITableViewController {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var entities : [TestEntity] = []
+    let baseUrl = "http://localhost:8000"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +59,8 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        // self.callApi()
-        self.callApiUsingDecoder()
+        //self.callApi()
+        //self.callApiUsingDecoder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,7 +69,8 @@ class TableViewController: UITableViewController {
     }
     
     func callApi(){
-        let empApiUrl = "http://localhost:8000/api/v1/employees/1/"
+        
+        let empApiUrl = baseUrl + "/api/v1/employees/1/"
         let url = URL(string: empApiUrl)
         var urlRequest = URLRequest(url: url!)
         urlRequest.addValue("Token eff98b75e5f81ef1a7d756b4d9270133759d7934", forHTTPHeaderField: "Authorization")
@@ -79,7 +81,8 @@ class TableViewController: UITableViewController {
             //print(err)
             // Binary to String
             guard let data = data else { return }
-            //let dataAsStr = String(data: data, encoding: .utf8)
+            let dataAsStr = String(data: data, encoding: .utf8)
+            print(dataAsStr!)
             
             // Binary to Json
             do{
@@ -110,12 +113,14 @@ class TableViewController: UITableViewController {
     }
 
     func callApiUsingDecoder(){
-        let url = URL(string: "http://localhost:8000/api/v1/employees/")
+        let url = URL(string: baseUrl + "/api/v1/employees/")
         var urlRequest = URLRequest(url: url!)
         urlRequest.addValue("Token eff98b75e5f81ef1a7d756b4d9270133759d7934", forHTTPHeaderField: "Authorization")
         URLSession.shared.dataTask(with: urlRequest) { (data, response, err) in
             do {
                 guard let data = data else { return }
+                print("Print Data")
+                print(data)
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
                 // For Single Object try decoder.decode(Employee.self, from: data)
